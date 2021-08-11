@@ -1,0 +1,31 @@
+{
+    "$from": {
+        "users": {
+            "$where": {
+                "firstName": {
+                    "$eq": "Brad",
+                    "$or": {
+                        "$matches": "/B.*?d/",
+                        "$or": {
+                            "$ne": "Foo"
+                        }
+                    }
+                },
+                "$and": {
+                    "lastName": {
+                        "$eq": "Jones"
+                    }
+                }
+            },
+            "$select": {
+                "fullName": "$.firstName $.lastName",
+                "firstName": "$.firstName",
+                "lastName": "$.lastName",
+                "city": "$.address.city"
+            },
+            "$sortBy": "lastName",
+            "$skip": 3,
+            "$take": 5
+        }
+    }
+}

@@ -1,0 +1,11 @@
+from:
+  foo:
+    where:
+      x:
+        eq: "abc"
+        or:
+          eq: "123"
+    select:
+      id:
+      name:
+        as: "firstName"
